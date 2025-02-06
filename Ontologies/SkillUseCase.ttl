@@ -1,0 +1,200 @@
+@prefix : <http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/> .
+
+<http://example.org/dfki/twinmap> rdf:type owl:Ontology ;
+                                   owl:imports <https://w3id.org/i40/rami#> .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/dfki/twinmap#hasCapability
+:hasCapability rdf:type owl:ObjectProperty ;
+               rdfs:domain :Actor ;
+               rdfs:range :Capability .
+
+
+###  http://example.org/dfki/twinmap#hasParameter
+:hasParameter rdf:type owl:ObjectProperty ;
+              rdfs:domain :Skill .
+
+
+###  http://example.org/dfki/twinmap#hasPostcondition
+:hasPostcondition rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasCondition ;
+                  rdfs:domain :Skill ;
+                  rdfs:range :Postcondition .
+
+
+###  http://example.org/dfki/twinmap#hasPrecondition
+:hasPrecondition rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasCondition ;
+                 rdfs:domain :Skill ;
+                 rdfs:range :Precondition .
+
+
+###  http://example.org/dfki/twinmap#implementedBy
+:implementedBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf :implementsCapability .
+
+
+###  http://example.org/dfki/twinmap#implementsCapability
+:implementsCapability rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Skill ;
+                      rdfs:range :Capability .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/containedIn
+:containedIn rdf:type owl:ObjectProperty ;
+             owl:inverseOf :contains .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/contains
+:contains rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:TransitiveProperty ;
+          rdfs:domain :Storage ;
+          rdfs:range :Object .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/definedByRule
+:definedByRule rdf:type owl:ObjectProperty ,
+                        owl:IrreflexiveProperty ;
+               rdfs:domain :Condition ;
+               rdfs:range :PDDLRule .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasCondition
+:hasCondition rdf:type owl:ObjectProperty ;
+              rdfs:domain :Skill ;
+              rdfs:range :Condition .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasParameter
+:hasParameter rdf:type owl:ObjectProperty ,
+                       owl:IrreflexiveProperty ;
+              rdfs:domain :Condition ;
+              rdfs:range [ rdf:type owl:Class ;
+                           owl:unionOf ( :Actor
+                                         :Object
+                                       )
+                         ] .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasSkill
+:hasSkill rdf:type owl:ObjectProperty ;
+          rdfs:domain :Actor ;
+          rdfs:range :Skill .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/heldBy
+:heldBy rdf:type owl:ObjectProperty ;
+        owl:inverseOf :holding .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/holding
+:holding rdf:type owl:ObjectProperty ;
+         rdfs:domain :Actor ;
+         rdfs:range :Object .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/isTightened
+:isTightened rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Screw ;
+             rdfs:range xsd:boolean .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/dfki/twinmap#Capability
+:Capability rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Actor
+:Actor rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Condition
+:Condition rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Object
+:Object rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/PDDLRule
+:PDDLRule rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Pick
+:Pick rdf:type owl:Class ;
+      rdfs:subClassOf :Skill .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Place
+:Place rdf:type owl:Class ;
+       rdfs:subClassOf :Skill .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Postcondition
+:Postcondition rdf:type owl:Class ;
+               rdfs:subClassOf :Condition ;
+               owl:disjointWith :Precondition .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Precondition
+:Precondition rdf:type owl:Class ;
+              rdfs:subClassOf :Condition .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Screw
+:Screw rdf:type owl:Class ;
+       rdfs:subClassOf :WorkableObject .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Screwdriver
+:Screwdriver rdf:type owl:Class ;
+             rdfs:subClassOf :Object .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Screwing
+:Screwing rdf:type owl:Class ;
+          rdfs:subClassOf :Skill .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Skill
+:Skill rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Storage
+:Storage rdf:type owl:Class ;
+         rdfs:subClassOf :Object .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Table
+:Table rdf:type owl:Class ;
+       rdfs:subClassOf :Storage .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/WorkableObject
+:WorkableObject rdf:type owl:Class ;
+                rdfs:subClassOf :Object .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Worker
+:Worker rdf:type owl:Class ;
+        rdfs:subClassOf :Actor .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
