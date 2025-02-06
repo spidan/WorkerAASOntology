@@ -1,0 +1,57 @@
+@base <http://example.org/dfki/ex#> .
+@prefix tm: <http://example.org/dfki/twinmap#> .
+@prefix rami: <https://w3id.org/i40/rami#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+
+<DumbWorker> a tm:Worker;
+    rdfs:label "DumbWorker";
+    tm:hasSkill <http://example.org/dfki/twinmap/ajan/skills/0001> .
+    
+<https://example.com/ids/sm/7310_3102_1052_2137> a tm:Worker, rami:AdminShell;
+    rdfs:label "Worker" ;
+    tm:hasSkill <http://example.org/dfki/twinmap/ajan/skills/0001>, <http://example.org/dfki/twinmap/ajan/skills/0002>, <http://example.org/dfki/twinmap/ajan/skills/0003> .
+
+<http://example.org/dfki/twinmap/ajan/skills/0001> a tm:Pick;
+    tm:hasPrecondition [ tm:definedByRule 
+                            [
+                                rdf:value "(Screwdriver accessibleBy Worker) and (Table contains Screwdriver)"
+                            ]
+                        ];
+    tm:hasPostcondition [ tm:definedByRule 
+                            [
+                                rdf:value "(Worker holding Screwdriver) and not(Table contains Screwdriver)"
+                            ]
+                        ];
+    tm:hasParameter <https://example.com/ids/sm/7310_3102_1052_2137>, <https://example.com/ids/sm/1170_8072_1142_7710> , <table> .
+
+<http://example.org/dfki/twinmap/ajan/skills/0002> a tm:Place;
+    tm:hasPrecondition [ tm:definedByRule 
+                            [
+                                rdf:value ""
+                            ]
+                        ];
+    tm:hasPostcondition [ tm:definedByRule 
+                            [
+                                rdf:value ""
+                            ]
+                        ].
+
+<http://example.org/dfki/twinmap/ajan/skills/0003> a tm:Screwing;
+    tm:hasPrecondition [ tm:definedByRule 
+                            [
+                                rdf:value ""
+                            ]
+                        ];
+    tm:hasPostcondition [ tm:definedByRule 
+                            [
+                                rdf:value ""
+                            ]
+                        ].
+
+<table> a tm:Storage;
+    tm:contains <https://example.com/ids/sm/1170_8072_1142_7710>;
+    rdfs:label "Table" .
+
+<https://example.com/ids/sm/1170_8072_1142_7710> a rami:AdminShell, tm:Screwdriver ;
+    rdfs:label "Screwdriver".
