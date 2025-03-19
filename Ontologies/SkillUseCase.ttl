@@ -13,6 +13,45 @@
 #    Object Properties
 #################################################################
 
+###  http://example.org/dfki/twinmap#attachedTo
+:attachedTo rdf:type owl:ObjectProperty ,
+                     owl:SymmetricProperty ,
+                     owl:TransitiveProperty ,
+                     owl:IrreflexiveProperty ;
+            rdfs:domain :Part ;
+            rdfs:range :Part ;
+            rdfs:comment "Expresses that one part of a thing is attached to another thing as result of a worker action" ;
+            rdfs:label "attachedTo" .
+
+
+###  http://example.org/dfki/twinmap#attachedWith
+:attachedWith rdf:type owl:ObjectProperty ,
+                       owl:IrreflexiveProperty ;
+              rdfs:domain :Part ;
+              rdfs:range :Connector .
+
+
+###  http://example.org/dfki/twinmap#gluedTo
+:gluedTo rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :attachedTo .
+
+
+###  http://example.org/dfki/twinmap#safelyAttached
+:safelyAttached rdf:type owl:ObjectProperty ;
+                rdfs:comment "Expresses that a part is not only attached, but safely attached in the sense that it complies to certain quality standards" ;
+                rdfs:label "safelyAttached" .
+
+
+###  http://example.org/dfki/twinmap#screwedTo
+:screwedTo rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :attachedTo .
+
+
+###  http://example.org/dfki/twinmap#tiedTo
+:tiedTo rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :attachedTo .
+
+
 ###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/containedIn
 :containedIn rdf:type owl:ObjectProperty ;
              owl:inverseOf :contains ;
@@ -135,6 +174,32 @@
 #    Classes
 #################################################################
 
+###  http://example.org/dfki/twinmap#CableTies
+:CableTies rdf:type owl:Class ;
+           rdfs:subClassOf :Connector ;
+           rdfs:label "CableTies" .
+
+
+###  http://example.org/dfki/twinmap#Connector
+:Connector rdf:type owl:Class ;
+           rdfs:subClassOf :WorkableObject ;
+           rdfs:comment "Any worker usable object that can be used to attach objects to other objects" ;
+           rdfs:label "Connector" .
+
+
+###  http://example.org/dfki/twinmap#Glue
+:Glue rdf:type owl:Class ;
+      rdfs:subClassOf :Connector ;
+      rdfs:label "Glue" .
+
+
+###  http://example.org/dfki/twinmap#Part
+:Part rdf:type owl:Class ;
+      rdfs:subClassOf :WorkableObject ;
+      rdfs:comment "Any part of something to be assembled" ;
+      rdfs:label "Part" .
+
+
 ###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Actor
 :Actor rdf:type owl:Class ;
        rdfs:comment "Any entity that can perform actions using specific skills" ;
@@ -196,7 +261,7 @@
 
 ###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Screw
 :Screw rdf:type owl:Class ;
-       rdfs:subClassOf :WorkableObject ;
+       rdfs:subClassOf :Connector ;
        rdfs:label "Screw" .
 
 
