@@ -1,0 +1,313 @@
+@prefix : <http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/> .
+
+<http://example.org/dfki/twinmap> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/attachedTo
+:attachedTo rdf:type owl:ObjectProperty ,
+                     owl:SymmetricProperty ,
+                     owl:TransitiveProperty ,
+                     owl:IrreflexiveProperty ;
+            rdfs:domain :Part ;
+            rdfs:range :Part ;
+            rdfs:comment "Expresses that one part of a thing is attached to another thing as result of a worker action" ;
+            rdfs:label "attachedTo" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/attachedWith
+:attachedWith rdf:type owl:ObjectProperty ,
+                       owl:IrreflexiveProperty ;
+              rdfs:domain :Part ;
+              rdfs:range :Connector .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/containedIn
+:containedIn rdf:type owl:ObjectProperty ;
+             owl:inverseOf :contains ;
+             rdfs:comment "For objects within a storage" ;
+             rdfs:label "containedIn" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/contains
+:contains rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf owl:topObjectProperty ;
+          rdf:type owl:TransitiveProperty ;
+          rdfs:domain :Storage ;
+          rdfs:range :Object ;
+          rdfs:label "contains" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/definedByRule
+:definedByRule rdf:type owl:ObjectProperty ,
+                        owl:IrreflexiveProperty ;
+               rdfs:domain :Condition ;
+               rdfs:range :PDDLRule ;
+               rdfs:comment "Relates a given condition to the formal rule defining these conditions" ;
+               rdfs:label "definedByRule" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/gluedTo
+:gluedTo rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :attachedTo .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasCapability
+:hasCapability rdf:type owl:ObjectProperty ;
+               rdfs:domain :Actor ;
+               rdfs:range :Capability ;
+               rdfs:label "hasCapability" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasCondition
+:hasCondition rdf:type owl:ObjectProperty ;
+              rdfs:domain :Skill ;
+              rdfs:range :Condition ;
+              rdfs:label "hasCondition" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasParameter
+:hasParameter rdf:type owl:ObjectProperty ,
+                       owl:IrreflexiveProperty ;
+              rdfs:domain :Condition ,
+                          :Skill ;
+              rdfs:range [ rdf:type owl:Class ;
+                           owl:unionOf ( :Actor
+                                         :Object
+                                       )
+                         ] ;
+              rdfs:comment "The paramters of a given skill, in the sense of objects within the world that are needed or affected when performing the skill" ;
+              rdfs:label "hasParameter" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasPostcondition
+:hasPostcondition rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :hasCondition ;
+                  rdfs:domain :Skill ;
+                  rdfs:range :Postcondition ;
+                  rdfs:label "hasPostcondition" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasPrecondition
+:hasPrecondition rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasCondition ;
+                 rdfs:domain :Skill ;
+                 rdfs:range :Precondition ;
+                 rdfs:label "hasPrecondition" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasSkill
+:hasSkill rdf:type owl:ObjectProperty ;
+          rdfs:domain :Actor ;
+          rdfs:range :Skill ;
+          rdfs:label "hasSkill" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/heldBy
+:heldBy rdf:type owl:ObjectProperty ;
+        owl:inverseOf :holding ;
+        rdfs:comment "An object carried in the limbs of an actor is heldBy this actor" ;
+        rdfs:label "heldBy" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/holding
+:holding rdf:type owl:ObjectProperty ;
+         rdfs:domain :Actor ;
+         rdfs:range :Object ;
+         rdfs:comment "An actor holding an object has this object in one of its limbs" ;
+         rdfs:label "holding" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/implementedBy
+:implementedBy rdf:type owl:ObjectProperty ;
+               owl:inverseOf :implementsCapability ;
+               rdfs:comment "A capability as a rather abstract concept of what can be done is usually implemented by one or more skills" ,
+                            "implementedBy" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/implementsCapability
+:implementsCapability rdf:type owl:ObjectProperty ;
+                      rdfs:domain :Skill ;
+                      rdfs:range :Capability ;
+                      rdfs:comment "A skill as a concrete way of solving problems usually implements a capability" ;
+                      rdfs:label "implementsCapability" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/safelyAttached
+:safelyAttached rdf:type owl:ObjectProperty ;
+                rdfs:comment "Expresses that a part is not only attached, but safely attached in the sense that it complies to certain quality standards" ;
+                rdfs:label "safelyAttached" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/screwedTo
+:screwedTo rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :attachedTo .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/tiedTo
+:tiedTo rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :attachedTo .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/isTightened
+:isTightened rdf:type owl:DatatypeProperty ;
+             rdfs:domain :Screw ;
+             rdfs:range xsd:boolean ;
+             rdfs:comment "Boolean describing whether a workable object that can be tightened is tightened already" ;
+             rdfs:label "isTightened" .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Actor
+:Actor rdf:type owl:Class ;
+       rdfs:comment "Any entity that can perform actions using specific skills" ;
+       rdfs:label "Actor" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/CableTies
+:CableTies rdf:type owl:Class ;
+           rdfs:subClassOf :Connector ;
+           rdfs:label "CableTies" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Capability
+:Capability rdf:type owl:Class ;
+            rdfs:comment "Abstract concept of what kind of action an actor is able to perform" ;
+            rdfs:label "Capability" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Condition
+:Condition rdf:type owl:Class ;
+           rdfs:comment "Conditions related to skills to be performed in an environment" ;
+           rdfs:label "Condition" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Connector
+:Connector rdf:type owl:Class ;
+           rdfs:subClassOf :WorkableObject ;
+           rdfs:comment "Any worker usable object that can be used to attach objects to other objects" ;
+           rdfs:label "Connector" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Glue
+:Glue rdf:type owl:Class ;
+      rdfs:subClassOf :Connector ;
+      rdfs:label "Glue" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Object
+:Object rdf:type owl:Class ;
+        rdfs:comment "Any object in the world that is interacted with by an actor" ;
+        rdfs:label "Object" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/PDDLRule
+:PDDLRule rdf:type owl:Class ;
+          rdfs:comment "A PDDL rule to express conditions for skills" ;
+          rdfs:label "PDDLRule" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Part
+:Part rdf:type owl:Class ;
+      rdfs:subClassOf :WorkableObject ;
+      rdfs:comment "Any part of something to be assembled" ;
+      rdfs:label "Part" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Pick
+:Pick rdf:type owl:Class ;
+      rdfs:subClassOf :Skill ;
+      rdfs:comment "Skill for picking up an object" ;
+      rdfs:label "Pick" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Place
+:Place rdf:type owl:Class ;
+       rdfs:subClassOf :Skill ;
+       rdfs:comment "Skill for placing an object carried by an actor to a storage" ;
+       rdfs:label "Place" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Postcondition
+:Postcondition rdf:type owl:Class ;
+               rdfs:subClassOf :Condition ;
+               owl:disjointWith :Precondition ;
+               rdfs:comment "Postconditions of a skill that apply as an effect after a skill is performed" ;
+               rdfs:label "Postcondition" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Precondition
+:Precondition rdf:type owl:Class ;
+              rdfs:subClassOf :Condition ;
+              rdfs:comment "Precondition that must be fulfilled for a skill to be performed" ;
+              rdfs:label "Precondition" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Screw
+:Screw rdf:type owl:Class ;
+       rdfs:subClassOf :Connector ;
+       rdfs:label "Screw" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Screwdriver
+:Screwdriver rdf:type owl:Class ;
+             rdfs:subClassOf :Object ;
+             rdfs:label "Screwdriver" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Screwing
+:Screwing rdf:type owl:Class ;
+          rdfs:subClassOf :Skill ;
+          rdfs:comment "Skill implementing screwing in the sense of tightening a workable object using a screwdriver" ;
+          rdfs:label "Screwing" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Skill
+:Skill rdf:type owl:Class ;
+       rdfs:comment "A specific skill describing how to solve a specific task, usually providing a concrete implementation of a capability" ;
+       rdfs:label "Skill" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Storage
+:Storage rdf:type owl:Class ;
+         rdfs:subClassOf :Object ;
+         rdfs:comment "Any object that in some sense can act as a storage by containing other objects" ;
+         rdfs:label "Storage" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Table
+:Table rdf:type owl:Class ;
+       rdfs:subClassOf :Storage ;
+       rdfs:label "Table" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/WorkableObject
+:WorkableObject rdf:type owl:Class ;
+                rdfs:subClassOf :Object ;
+                rdfs:comment "Objects that can be targets of skills" ;
+                rdfs:label "WorkableObject" .
+
+
+###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Worker
+:Worker rdf:type owl:Class ;
+        rdfs:subClassOf :Actor ;
+        rdfs:comment "A human worker" ;
+        rdfs:label "Worker" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
