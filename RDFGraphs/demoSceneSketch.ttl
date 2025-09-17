@@ -1,0 +1,70 @@
+@prefix toy: <http://www.dfki.de/TwinMap/toyTruck/> .
+@prefix mat: <http://www.dfki.de/TwinMap/material/> .
+@prefix model: <http://www.dfki.de/TwinMap/3DModel/> .
+@prefix aas: <http://www.dfki.de/TwinMap/AAS/> .
+@prefix tool: <http://www.dfki.de/TwinMap/Tool/> .
+@prefix plan: <http://www.dfki.de/TwinMap/Planning/> .
+@prefix worker: <http://www.dfki.de/TwinMap/Worker/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+
+@base <http://www.dfki.de/TwinMap/> .
+
+<truck> a toy:Truck; 
+	model:meshId "TruckMeshId" ;
+	aas:definedBy <https://twinmap.de/trucktoyAAS> ;
+	toy:hasWheel <Wheel1>, <Wheel2>, <Wheel3>, <Wheel4> .
+
+<Wheel1> a toy:Wheel;
+	model:meshId "meshID1" ;
+	toy:fixedWith <Screw1> ;
+	toy:attachedVia <Attachment1> . 
+
+<Wheel2> a toy:Wheel;
+	model:meshId "meshID2" ;
+	toy:fixedWith <Screw2> ;
+	toy:attachedVia <Attachment2> . 
+
+<Wheel3> a toy:Wheel;
+	model:meshId "meshID3" ;
+	toy:fixedWith <Screw3> ;
+	toy:attachedVia <Attachment3> . 
+
+<Wheel4> a toy:Wheel;
+	model:meshId "meshID4" ;
+	toy:fixedWith <Screw4> ;
+	toy:attachedVia <Attachment4> . 
+
+<Attachment1> a tool:Screwhole ;
+	tool:thread tool:ThreadTypeA .
+
+<Attachment2> a tool:Screwhole ;
+	tool:thread tool:ThreadTypeA .
+
+<Attachment3> a tool:Screwhole ;
+	tool:thread tool:ThreadTypeA .
+
+<Attachment4> a tool:Screwhole ;
+	tool:thread tool:ThreadTypeA .
+
+<Screw1> a tool:Screw ;
+	model:meshId "ScrewMeshID1" ;
+	owl:sameAs <https://twinmap.de/trucktoy/components/screw1>;
+	tool:thread tool:ThreadTypeA;
+	tool:head tool:CapHead ;
+	tool:compatibleTool tool:CapDriver ;
+	mat:hasId "1" .
+
+<Screw2> a tool:Screw ;
+	model:meshId "ScrewMeshID2" ;
+	owl:sameAs <https://twinmap.de/trucktoy/components/screw2>;
+	tool:head tool:ButtonHead ;
+	tool:thread tool:ThreadTypeA;
+	tool:compatibleTool tool:ButtonDriver ;
+	mat:hasId "2" ;
+	plan:hasId "IdInPlanner" .
+
+<Helmut> a worker:Worker;
+	worker:hasSkills ( worker:UseScrewDriver worker:ScrewByHand ) .
+
+<https://twinmap.de/trucktoy/components/screw1> owl:sameAs <Screw1> .
+<https://twinmap.de/trucktoy/components/screw2> owl:sameAs <Screw2> .
