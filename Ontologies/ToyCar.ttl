@@ -10,6 +10,22 @@
                                            owl:versionIRI <http://example.org/dfki/twinmap/toyCar/1.0.0> .
 
 #################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/dfki/twinmap/toyCar/attachedAt
+:attachedAt rdf:type owl:ObjectProperty ;
+            rdfs:domain :Part ;
+            rdfs:range :Attachment .
+
+
+###  http://example.org/dfki/twinmap/toyCar/hasPart
+:hasPart rdf:type owl:ObjectProperty ;
+         rdfs:domain :Toy ;
+         rdfs:range :Part .
+
+
+#################################################################
 #    Classes
 #################################################################
 
@@ -80,6 +96,63 @@
 ###  http://example.org/dfki/twinmap/toyCar/Wheel
 :Wheel rdf:type owl:Class ;
        rdfs:subClassOf :Part .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/dfki/twinmap/toyCar/ToyTruck
+:ToyTruck rdf:type owl:NamedIndividual ,
+                   :Truck ;
+          :hasPart :WheelBackLeft ,
+                   :WheelBackRight ,
+                   :WheelFrontLeft ,
+                   :WheelFrontRight .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelAttachBL
+:WheelAttachBL rdf:type owl:NamedIndividual ,
+                        :Attachment .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelAttachBR
+:WheelAttachBR rdf:type owl:NamedIndividual ,
+                        :Attachment .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelAttachFL
+:WheelAttachFL rdf:type owl:NamedIndividual ,
+                        :Attachment .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelAttachFR
+:WheelAttachFR rdf:type owl:NamedIndividual ,
+                        :Attachment .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelBackLeft
+:WheelBackLeft rdf:type owl:NamedIndividual ,
+                        :Wheel ;
+               :attachedAt :WheelAttachBL .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelBackRight
+:WheelBackRight rdf:type owl:NamedIndividual ,
+                         :Wheel ;
+                :attachedAt :WheelAttachBR .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelFrontLeft
+:WheelFrontLeft rdf:type owl:NamedIndividual ,
+                         :Wheel ;
+                :attachedAt :WheelAttachFL .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelFrontRight
+:WheelFrontRight rdf:type owl:NamedIndividual ,
+                          :Wheel ;
+                 :attachedAt :WheelAttachFR .
 
 
 #################################################################
