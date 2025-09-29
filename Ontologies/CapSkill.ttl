@@ -1,31 +1,19 @@
-@prefix : <http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/> .
+@prefix : <http://example.org/dfki/twinmap/Capabilities/> .
 @prefix owl: <http://www.w3.org/2002/07/owl#> .
 @prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
 @prefix xml: <http://www.w3.org/XML/1998/namespace> .
 @prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
-@base <http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/> .
+@base <http://example.org/dfki/twinmap/Capabilities/> .
 
-<http://example.org/dfki/twinmap> rdf:type owl:Ontology ;
-                                   owl:imports <https://w3id.org/i40/rami#> .
+<http://example.org/dfki/twinmap/Capabilities/> rdf:type owl:Ontology ;
+                                                 owl:imports <https://w3id.org/i40/rami#> .
 
 #################################################################
 #    Object Properties
 #################################################################
 
-###  http://example.org/dfki/twinmap#providesCapability
-:providesCapability rdf:type owl:ObjectProperty ;
-                    rdfs:domain :Service ;
-                    rdfs:range :Capability .
-
-
-###  http://example.org/dfki/twinmap#providesService
-:providesService rdf:type owl:ObjectProperty ;
-                 rdfs:domain :Provider ;
-                 rdfs:range :Service .
-
-
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/attachedTo
+###  http://example.org/dfki/twinmap/Capabilities/attachedTo
 :attachedTo rdf:type owl:ObjectProperty ,
                      owl:SymmetricProperty ,
                      owl:TransitiveProperty ,
@@ -36,21 +24,21 @@
             rdfs:label "attachedTo" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/attachedWith
+###  http://example.org/dfki/twinmap/Capabilities/attachedWith
 :attachedWith rdf:type owl:ObjectProperty ,
                        owl:IrreflexiveProperty ;
               rdfs:domain :Part ;
               rdfs:range :Connector .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/containedIn
+###  http://example.org/dfki/twinmap/Capabilities/containedIn
 :containedIn rdf:type owl:ObjectProperty ;
              owl:inverseOf :contains ;
              rdfs:comment "For objects within a storage" ;
              rdfs:label "containedIn" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/contains
+###  http://example.org/dfki/twinmap/Capabilities/contains
 :contains rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf owl:topObjectProperty ;
           rdf:type owl:TransitiveProperty ;
@@ -59,7 +47,7 @@
           rdfs:label "contains" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/definedByRule
+###  http://example.org/dfki/twinmap/Capabilities/definedByRule
 :definedByRule rdf:type owl:ObjectProperty ,
                         owl:IrreflexiveProperty ;
                rdfs:domain :Condition ;
@@ -68,26 +56,26 @@
                rdfs:label "definedByRule" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/gluedTo
+###  http://example.org/dfki/twinmap/Capabilities/gluedTo
 :gluedTo rdf:type owl:ObjectProperty ;
          rdfs:subPropertyOf :attachedTo .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasCapability
+###  http://example.org/dfki/twinmap/Capabilities/hasCapability
 :hasCapability rdf:type owl:ObjectProperty ;
                rdfs:domain :Actor ;
                rdfs:range :Capability ;
                rdfs:label "hasCapability" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasCondition
+###  http://example.org/dfki/twinmap/Capabilities/hasCondition
 :hasCondition rdf:type owl:ObjectProperty ;
               rdfs:domain :Skill ;
               rdfs:range :Condition ;
               rdfs:label "hasCondition" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasParameter
+###  http://example.org/dfki/twinmap/Capabilities/hasParameter
 :hasParameter rdf:type owl:ObjectProperty ,
                        owl:IrreflexiveProperty ;
               rdfs:domain :Condition ,
@@ -101,7 +89,7 @@
               rdfs:label "hasParameter" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasPostcondition
+###  http://example.org/dfki/twinmap/Capabilities/hasPostcondition
 :hasPostcondition rdf:type owl:ObjectProperty ;
                   rdfs:subPropertyOf :hasCondition ;
                   rdfs:domain :Skill ;
@@ -109,7 +97,7 @@
                   rdfs:label "hasPostcondition" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasPrecondition
+###  http://example.org/dfki/twinmap/Capabilities/hasPrecondition
 :hasPrecondition rdf:type owl:ObjectProperty ;
                  rdfs:subPropertyOf :hasCondition ;
                  rdfs:domain :Skill ;
@@ -117,21 +105,21 @@
                  rdfs:label "hasPrecondition" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/hasSkill
+###  http://example.org/dfki/twinmap/Capabilities/hasSkill
 :hasSkill rdf:type owl:ObjectProperty ;
           rdfs:domain :Actor ;
           rdfs:range :Skill ;
           rdfs:label "hasSkill" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/heldBy
+###  http://example.org/dfki/twinmap/Capabilities/heldBy
 :heldBy rdf:type owl:ObjectProperty ;
         owl:inverseOf :holding ;
         rdfs:comment "An object carried in the limbs of an actor is heldBy this actor" ;
         rdfs:label "heldBy" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/holding
+###  http://example.org/dfki/twinmap/Capabilities/holding
 :holding rdf:type owl:ObjectProperty ;
          rdfs:domain :Actor ;
          rdfs:range :Object ;
@@ -139,14 +127,14 @@
          rdfs:label "holding" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/implementedBy
+###  http://example.org/dfki/twinmap/Capabilities/implementedBy
 :implementedBy rdf:type owl:ObjectProperty ;
                owl:inverseOf :implementsCapability ;
                rdfs:comment "A capability as a rather abstract concept of what can be done is usually implemented by one or more skills" ,
                             "implementedBy" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/implementsCapability
+###  http://example.org/dfki/twinmap/Capabilities/implementsCapability
 :implementsCapability rdf:type owl:ObjectProperty ;
                       rdfs:domain :Skill ;
                       rdfs:range :Capability ;
@@ -154,18 +142,30 @@
                       rdfs:label "implementsCapability" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/safelyAttached
+###  http://example.org/dfki/twinmap/Capabilities/providesCapability
+:providesCapability rdf:type owl:ObjectProperty ;
+                    rdfs:domain :Service ;
+                    rdfs:range :Capability .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/providesService
+:providesService rdf:type owl:ObjectProperty ;
+                 rdfs:domain :Provider ;
+                 rdfs:range :Service .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/safelyAttached
 :safelyAttached rdf:type owl:ObjectProperty ;
                 rdfs:comment "Expresses that a part is not only attached, but safely attached in the sense that it complies to certain quality standards" ;
                 rdfs:label "safelyAttached" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/screwedTo
+###  http://example.org/dfki/twinmap/Capabilities/screwedTo
 :screwedTo rdf:type owl:ObjectProperty ;
            rdfs:subPropertyOf :attachedTo .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/tiedTo
+###  http://example.org/dfki/twinmap/Capabilities/tiedTo
 :tiedTo rdf:type owl:ObjectProperty ;
         rdfs:subPropertyOf :attachedTo .
 
@@ -174,7 +174,7 @@
 #    Data properties
 #################################################################
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/isTightened
+###  http://example.org/dfki/twinmap/Capabilities/isTightened
 :isTightened rdf:type owl:DatatypeProperty ;
              rdfs:domain :Screw ;
              rdfs:range xsd:boolean ;
@@ -186,112 +186,87 @@
 #    Classes
 #################################################################
 
-###  http://example.org/dfki/twinmap#Assemble
-:Assemble rdf:type owl:Class ;
-          rdfs:subClassOf :Capability .
-
-
-###  http://example.org/dfki/twinmap#Insert
-:Insert rdf:type owl:Class ;
-        rdfs:subClassOf :Capability .
-
-
-###  http://example.org/dfki/twinmap#Process
-:Process rdf:type owl:Class .
-
-
-###  http://example.org/dfki/twinmap#Product
-:Product rdf:type owl:Class .
-
-
-###  http://example.org/dfki/twinmap#Provider
-:Provider rdf:type owl:Class .
-
-
-###  http://example.org/dfki/twinmap#Resource
-:Resource rdf:type owl:Class .
-
-
-###  http://example.org/dfki/twinmap#Service
-:Service rdf:type owl:Class .
-
-
-###  http://example.org/dfki/twinmap#Tighten
-:Tighten rdf:type owl:Class ;
-         rdfs:subClassOf :Capability .
-
-
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Actor
+###  http://example.org/dfki/twinmap/Capabilities/Actor
 :Actor rdf:type owl:Class ;
        rdfs:comment "Any entity that can perform actions using specific skills" ;
        rdfs:label "Actor" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/CableTies
+###  http://example.org/dfki/twinmap/Capabilities/Assemble
+:Assemble rdf:type owl:Class ;
+          rdfs:subClassOf :Capability .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/CableTies
 :CableTies rdf:type owl:Class ;
            rdfs:subClassOf :Connector ;
            rdfs:label "CableTies" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Capability
+###  http://example.org/dfki/twinmap/Capabilities/Capability
 :Capability rdf:type owl:Class ;
             rdfs:comment "Abstract concept of what kind of action an actor is able to perform" ;
             rdfs:label "Capability" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Condition
+###  http://example.org/dfki/twinmap/Capabilities/Condition
 :Condition rdf:type owl:Class ;
            rdfs:comment "Conditions related to skills to be performed in an environment" ;
            rdfs:label "Condition" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Connector
+###  http://example.org/dfki/twinmap/Capabilities/Connector
 :Connector rdf:type owl:Class ;
            rdfs:subClassOf :WorkableObject ;
            rdfs:comment "Any worker usable object that can be used to attach objects to other objects" ;
            rdfs:label "Connector" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Glue
+###  http://example.org/dfki/twinmap/Capabilities/Glue
 :Glue rdf:type owl:Class ;
       rdfs:subClassOf :Connector ;
       rdfs:label "Glue" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Object
+###  http://example.org/dfki/twinmap/Capabilities/Insert
+:Insert rdf:type owl:Class ;
+        rdfs:subClassOf :Capability .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Object
 :Object rdf:type owl:Class ;
         rdfs:comment "Any object in the world that is interacted with by an actor" ;
         rdfs:label "Object" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/PDDLRule
+###  http://example.org/dfki/twinmap/Capabilities/PDDLRule
 :PDDLRule rdf:type owl:Class ;
           rdfs:comment "A PDDL rule to express conditions for skills" ;
           rdfs:label "PDDLRule" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Part
+###  http://example.org/dfki/twinmap/Capabilities/Part
 :Part rdf:type owl:Class ;
       rdfs:subClassOf :WorkableObject ;
       rdfs:comment "Any part of something to be assembled" ;
       rdfs:label "Part" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Pick
+###  http://example.org/dfki/twinmap/Capabilities/Pick
 :Pick rdf:type owl:Class ;
       rdfs:subClassOf :Skill ;
       rdfs:comment "Skill for picking up an object" ;
       rdfs:label "Pick" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Place
+###  http://example.org/dfki/twinmap/Capabilities/Place
 :Place rdf:type owl:Class ;
        rdfs:subClassOf :Skill ;
        rdfs:comment "Skill for placing an object carried by an actor to a storage" ;
        rdfs:label "Place" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Postcondition
+###  http://example.org/dfki/twinmap/Capabilities/Postcondition
 :Postcondition rdf:type owl:Class ;
                rdfs:subClassOf :Condition ;
                owl:disjointWith :Precondition ;
@@ -299,70 +274,105 @@
                rdfs:label "Postcondition" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Precondition
+###  http://example.org/dfki/twinmap/Capabilities/Precondition
 :Precondition rdf:type owl:Class ;
               rdfs:subClassOf :Condition ;
               rdfs:comment "Precondition that must be fulfilled for a skill to be performed" ;
               rdfs:label "Precondition" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Screw
+###  http://example.org/dfki/twinmap/Capabilities/Process
+:Process rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Product
+:Product rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Provider
+:Provider rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Resource
+:Resource rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Screw
 :Screw rdf:type owl:Class ;
        rdfs:subClassOf :Connector ;
        rdfs:label "Screw" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Screwdriver
+###  http://example.org/dfki/twinmap/Capabilities/Screwdriver
 :Screwdriver rdf:type owl:Class ;
              rdfs:subClassOf :Object ;
              rdfs:label "Screwdriver" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Screwing
+###  http://example.org/dfki/twinmap/Capabilities/Screwing
 :Screwing rdf:type owl:Class ;
           rdfs:subClassOf :Skill ;
           rdfs:comment "Skill implementing screwing in the sense of tightening a workable object using a screwdriver" ;
           rdfs:label "Screwing" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Skill
+###  http://example.org/dfki/twinmap/Capabilities/Service
+:Service rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Skill
 :Skill rdf:type owl:Class ;
        rdfs:comment "A specific skill describing how to solve a specific task, usually providing a concrete implementation of a capability" ;
        rdfs:label "Skill" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Storage
+###  http://example.org/dfki/twinmap/Capabilities/Storage
 :Storage rdf:type owl:Class ;
          rdfs:subClassOf :Object ;
          rdfs:comment "Any object that in some sense can act as a storage by containing other objects" ;
          rdfs:label "Storage" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Table
+###  http://example.org/dfki/twinmap/Capabilities/Table
 :Table rdf:type owl:Class ;
        rdfs:subClassOf :Storage ;
        rdfs:label "Table" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/WorkableObject
+###  http://example.org/dfki/twinmap/Capabilities/Tighten
+:Tighten rdf:type owl:Class ;
+         rdfs:subClassOf :Capability .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/WorkableObject
 :WorkableObject rdf:type owl:Class ;
                 rdfs:subClassOf :Object ;
                 rdfs:comment "Objects that can be targets of skills" ;
                 rdfs:label "WorkableObject" .
 
 
-###  http://www.semanticweb.org/daniel/ontologies/2025/0/untitled-ontology-78/Worker
+###  http://example.org/dfki/twinmap/Capabilities/Worker
 :Worker rdf:type owl:Class ;
         rdfs:subClassOf :Actor ;
         rdfs:comment "A human worker" ;
         rdfs:label "Worker" .
 
 
+###  http://example.org/dfki/twinmap/Capabilities/byHand
+:byHand rdf:type owl:Class ;
+        rdfs:subClassOf :Screwing .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/byScrewdriver
+:byScrewdriver rdf:type owl:Class ;
+               rdfs:subClassOf :Screwing .
+
+
 #################################################################
 #    Individuals
 #################################################################
 
-###  http://example.org/dfki/twinmap#AssembleToyCar
+###  http://example.org/dfki/twinmap/Capabilities/AssembleToyCar
 :AssembleToyCar rdf:type owl:NamedIndividual ,
                          :Service ;
                 :providesCapability :Assemble_body_19650 ,
@@ -370,25 +380,25 @@
                                     :Tighten_body_19650 .
 
 
-###  http://example.org/dfki/twinmap#Assemble_body_19650
+###  http://example.org/dfki/twinmap/Capabilities/Assemble_body_19650
 :Assemble_body_19650 rdf:type owl:NamedIndividual ,
                               :Assemble ,
                               :Capability .
 
 
-###  http://example.org/dfki/twinmap#Insert_body_19650
+###  http://example.org/dfki/twinmap/Capabilities/Insert_body_19650
 :Insert_body_19650 rdf:type owl:NamedIndividual ,
-                            :Insert ,
-                            :Capability .
+                            :Capability ,
+                            :Insert .
 
 
-###  http://example.org/dfki/twinmap#Tighten_body_19650
+###  http://example.org/dfki/twinmap/Capabilities/Tighten_body_19650
 :Tighten_body_19650 rdf:type owl:NamedIndividual ,
-                             :Tighten ,
-                             :Capability .
+                             :Capability ,
+                             :Tighten .
 
 
-###  http://example.org/dfki/twinmap#worker_instance
+###  http://example.org/dfki/twinmap/Capabilities/worker_instance
 :worker_instance rdf:type owl:NamedIndividual ,
                           :Provider ,
                           :Worker ;
