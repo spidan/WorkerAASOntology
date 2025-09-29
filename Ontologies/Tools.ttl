@@ -1,0 +1,205 @@
+@prefix : <http://www.semanticweb.org/daniel/ontologies/2025/8/untitled-ontology-110/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/daniel/ontologies/2025/8/untitled-ontology-110/> .
+
+<http://example.org/dfki/twinmap/Tools/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/dfki/twinmap/Tools/compatibleTool
+:compatibleTool rdf:type owl:ObjectProperty ;
+                owl:inverseOf :fitsDrive .
+
+
+###  http://example.org/dfki/twinmap/Tools/fitsDrive
+:fitsDrive rdf:type owl:ObjectProperty ;
+           rdfs:domain :Screwdriver ;
+           rdfs:range :ScrewDrive .
+
+
+###  http://example.org/dfki/twinmap/Tools/hasDrive
+:hasDrive rdf:type owl:ObjectProperty ;
+          rdfs:domain :Screw ;
+          rdfs:range :ScrewDrive .
+
+
+###  http://example.org/dfki/twinmap/Tools/hasThread
+:hasThread rdf:type owl:ObjectProperty ;
+           rdfs:domain :Screw ;
+           rdfs:range :Thread .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/dfki/twinmap/Tools/Blank
+:Blank rdf:type owl:Class ;
+       rdfs:subClassOf :ScrewDrive .
+
+
+###  http://example.org/dfki/twinmap/Tools/Cross
+:Cross rdf:type owl:Class ;
+       rdfs:subClassOf :ScrewDrive .
+
+
+###  http://example.org/dfki/twinmap/Tools/CrossScrew
+:CrossScrew rdf:type owl:Class ;
+            rdfs:subClassOf [ owl:intersectionOf ( :Screw
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :hasDrive ;
+                                                     owl:someValuesFrom :Cross
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/ElectricScrewdriver
+:ElectricScrewdriver rdf:type owl:Class ;
+                     rdfs:subClassOf :Screwdriver .
+
+
+###  http://example.org/dfki/twinmap/Tools/HandScrew
+:HandScrew rdf:type owl:Class ;
+           rdfs:subClassOf [ owl:intersectionOf ( :Screw
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hasDrive ;
+                                                    owl:someValuesFrom :Blank
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Hex
+:Hex rdf:type owl:Class ;
+     rdfs:subClassOf :ScrewDrive .
+
+
+###  http://example.org/dfki/twinmap/Tools/HexScrew
+:HexScrew rdf:type owl:Class ;
+          rdfs:subClassOf [ owl:intersectionOf ( :Screw
+                                                 [ rdf:type owl:Restriction ;
+                                                   owl:onProperty :hasDrive ;
+                                                   owl:someValuesFrom :Hex
+                                                 ]
+                                               ) ;
+                            rdf:type owl:Class
+                          ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/ManualScrewdriver
+:ManualScrewdriver rdf:type owl:Class ;
+                   rdfs:subClassOf :Screwdriver .
+
+
+###  http://example.org/dfki/twinmap/Tools/Philips
+:Philips rdf:type owl:Class ;
+         rdfs:subClassOf :ScrewDrive .
+
+
+###  http://example.org/dfki/twinmap/Tools/PhilipsScrew
+:PhilipsScrew rdf:type owl:Class ;
+              rdfs:subClassOf [ owl:intersectionOf ( :Screw
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasDrive ;
+                                                       owl:someValuesFrom :Philips
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Screw
+:Screw rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Tools/ScrewDrive
+:ScrewDrive rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Tools/Screwdriver
+:Screwdriver rdf:type owl:Class ;
+             rdfs:subClassOf :Tool .
+
+
+###  http://example.org/dfki/twinmap/Tools/Slotted
+:Slotted rdf:type owl:Class ;
+         rdfs:subClassOf :ScrewDrive .
+
+
+###  http://example.org/dfki/twinmap/Tools/SlottedScrew
+:SlottedScrew rdf:type owl:Class ;
+              rdfs:subClassOf [ owl:intersectionOf ( :Screw
+                                                     [ rdf:type owl:Restriction ;
+                                                       owl:onProperty :hasDrive ;
+                                                       owl:someValuesFrom :Slotted
+                                                     ]
+                                                   ) ;
+                                rdf:type owl:Class
+                              ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Thread
+:Thread rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Tools/Tool
+:Tool rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Tools/Torx
+:Torx rdf:type owl:Class ;
+      rdfs:subClassOf :ScrewDrive .
+
+
+###  http://example.org/dfki/twinmap/Tools/TorxScrew
+:TorxScrew rdf:type owl:Class ;
+           rdfs:subClassOf [ owl:intersectionOf ( :Screw
+                                                  [ rdf:type owl:Restriction ;
+                                                    owl:onProperty :hasDrive ;
+                                                    owl:someValuesFrom :Torx
+                                                  ]
+                                                ) ;
+                             rdf:type owl:Class
+                           ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/TypeA
+:TypeA rdf:type owl:Class ;
+       rdfs:subClassOf :Thread .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :Blank
+                :Cross
+                :Hex
+                :Philips
+                :Slotted
+                :Torx
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( :HandScrew
+                :HexScrew
+                :PhilipsScrew
+                :SlottedScrew
+                :TorxScrew
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
