@@ -6,8 +6,7 @@
 @prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
 @base <http://example.org/dfki/twinmap/Capabilities/> .
 
-<http://example.org/dfki/twinmap/Capabilities/> rdf:type owl:Ontology ;
-                                                 owl:imports <https://w3id.org/i40/rami#> .
+<http://example.org/dfki/twinmap/Capabilities/> rdf:type owl:Ontology .
 
 #################################################################
 #    Object Properties
