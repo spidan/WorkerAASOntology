@@ -13,6 +13,10 @@
 #    Object Properties
 #################################################################
 
+###  http://example.org/dfki/twinmap/Tools/hasThread
+<http://example.org/dfki/twinmap/Tools/hasThread> rdf:type owl:ObjectProperty .
+
+
 ###  http://example.org/dfki/twinmap/toyCar/attachedAt
 :attachedAt rdf:type owl:ObjectProperty ;
             rdfs:domain :Part ;
@@ -44,6 +48,10 @@
 #################################################################
 #    Classes
 #################################################################
+
+###  http://example.org/dfki/twinmap/Tools/TypeA
+<http://example.org/dfki/twinmap/Tools/TypeA> rdf:type owl:Class .
+
 
 ###  http://example.org/dfki/twinmap/toyCar/Attachment
 :Attachment rdf:type owl:Class .
@@ -154,22 +162,50 @@
 
 ###  http://example.org/dfki/twinmap/toyCar/WheelAttachBL
 :WheelAttachBL rdf:type owl:NamedIndividual ,
-                        :Attachment .
+                        [ owl:intersectionOf ( :Attachment
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty <http://example.org/dfki/twinmap/Tools/hasThread> ;
+                                                 owl:allValuesFrom <http://example.org/dfki/twinmap/Tools/TypeA>
+                                               ]
+                                             ) ;
+                          rdf:type owl:Class
+                        ] .
 
 
 ###  http://example.org/dfki/twinmap/toyCar/WheelAttachBR
 :WheelAttachBR rdf:type owl:NamedIndividual ,
-                        :Attachment .
+                        [ owl:intersectionOf ( :Attachment
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty <http://example.org/dfki/twinmap/Tools/hasThread> ;
+                                                 owl:allValuesFrom <http://example.org/dfki/twinmap/Tools/TypeA>
+                                               ]
+                                             ) ;
+                          rdf:type owl:Class
+                        ] .
 
 
 ###  http://example.org/dfki/twinmap/toyCar/WheelAttachFL
 :WheelAttachFL rdf:type owl:NamedIndividual ,
-                        :Attachment .
+                        [ owl:intersectionOf ( :Attachment
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty <http://example.org/dfki/twinmap/Tools/hasThread> ;
+                                                 owl:allValuesFrom <http://example.org/dfki/twinmap/Tools/TypeA>
+                                               ]
+                                             ) ;
+                          rdf:type owl:Class
+                        ] .
 
 
 ###  http://example.org/dfki/twinmap/toyCar/WheelAttachFR
 :WheelAttachFR rdf:type owl:NamedIndividual ,
-                        :Attachment .
+                        [ owl:intersectionOf ( :Attachment
+                                               [ rdf:type owl:Restriction ;
+                                                 owl:onProperty <http://example.org/dfki/twinmap/Tools/hasThread> ;
+                                                 owl:allValuesFrom <http://example.org/dfki/twinmap/Tools/TypeA>
+                                               ]
+                                             ) ;
+                          rdf:type owl:Class
+                        ] .
 
 
 ###  http://example.org/dfki/twinmap/toyCar/WheelBackLeft

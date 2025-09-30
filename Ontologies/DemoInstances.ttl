@@ -12,8 +12,28 @@
                                                          <http://example.org/dfki/twinmap/toyCar/1.0.0> .
 
 #################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/dfki/twinmap/toyCar/Toy
+<http://example.org/dfki/twinmap/toyCar/Toy> rdfs:subClassOf [ rdf:type owl:Class ;
+                                                               owl:unionOf ( <http://example.org/dfki/twinmap/toyCar/Bike>
+                                                                             <http://example.org/dfki/twinmap/toyCar/Car>
+                                                                           )
+                                                             ] .
+
+
+#################################################################
 #    Individuals
 #################################################################
+
+###  http://example.org/dfki/twinmap/Capabilities/CanScrewWithTool
+<http://example.org/dfki/twinmap/Capabilities/CanScrewWithTool> <http://example.org/dfki/twinmap/Capabilities/usesTool> <http://example.org/dfki/twinmap/Tools/Inst_ScrewDriver1> .
+
+
+###  http://example.org/dfki/twinmap/Tools/Inst_ScrewDriver1
+<http://example.org/dfki/twinmap/Tools/Inst_ScrewDriver1> rdf:type <http://example.org/dfki/twinmap/Capabilities/Tool> .
+
 
 ###  http://example.org/dfki/twinmap/Tools/Screw1
 <http://example.org/dfki/twinmap/Tools/Screw1> owl:sameAs <http://example.org/dfki/twinmap/toyCar/Screw1> .
