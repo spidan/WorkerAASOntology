@@ -31,6 +31,11 @@
 <http://example.org/dfki/twinmap/Capabilities/CanScrewWithTool> <http://example.org/dfki/twinmap/Capabilities/usesTool> <http://example.org/dfki/twinmap/Tools/Inst_ScrewDriver1> .
 
 
+###  http://example.org/dfki/twinmap/Capabilities/worker_instance
+<http://example.org/dfki/twinmap/Capabilities/worker_instance> <http://example.org/dfki/twinmap/Capabilities/hasSkill> <http://example.org/dfki/twinmap/Capabilities/CanScrewByHand> ,
+                                                                                                                       <http://example.org/dfki/twinmap/Capabilities/CanScrewWithTool> .
+
+
 ###  http://example.org/dfki/twinmap/Tools/Inst_ScrewDriver1
 <http://example.org/dfki/twinmap/Tools/Inst_ScrewDriver1> rdf:type <http://example.org/dfki/twinmap/Capabilities/Tool> .
 
