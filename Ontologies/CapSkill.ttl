@@ -169,6 +169,11 @@
         rdfs:subPropertyOf :attachedTo .
 
 
+###  http://example.org/dfki/twinmap/Capabilities/usesTool
+:usesTool rdf:type owl:ObjectProperty ;
+          rdfs:range :Tool .
+
+
 #################################################################
 #    Data properties
 #################################################################
@@ -343,6 +348,10 @@
          rdfs:subClassOf :Capability .
 
 
+###  http://example.org/dfki/twinmap/Capabilities/Tool
+:Tool rdf:type owl:Class .
+
+
 ###  http://example.org/dfki/twinmap/Capabilities/WorkableObject
 :WorkableObject rdf:type owl:Class ;
                 rdfs:subClassOf :Object ;
@@ -364,7 +373,14 @@
 
 ###  http://example.org/dfki/twinmap/Capabilities/byScrewdriver
 :byScrewdriver rdf:type owl:Class ;
-               rdfs:subClassOf :Screwing .
+               rdfs:subClassOf [ owl:intersectionOf ( :Screwing
+                                                      [ rdf:type owl:Restriction ;
+                                                        owl:onProperty :usesTool ;
+                                                        owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                                      ]
+                                                    ) ;
+                                 rdf:type owl:Class
+                               ] .
 
 
 #################################################################
