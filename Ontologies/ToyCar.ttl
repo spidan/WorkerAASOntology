@@ -34,6 +34,10 @@
          rdfs:range :Part .
 
 
+###  http://example.org/dfki/twinmap/toyCar/hasWheel
+:hasWheel rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :hasPart .
+
 #################################################################
 #    Classes
 #################################################################
