@@ -19,6 +19,15 @@
             rdfs:range :Attachment .
 
 
+###  http://example.org/dfki/twinmap/toyCar/fixedWith
+:fixedWith rdf:type owl:ObjectProperty ;
+           owl:inverseOf :fixes ;
+           rdfs:domain :Part ;
+           rdfs:range :Connector .
+
+
+###  http://example.org/dfki/twinmap/toyCar/fixes
+:fixes rdf:type owl:ObjectProperty .
 ###  http://example.org/dfki/twinmap/toyCar/hasPart
 :hasPart rdf:type owl:ObjectProperty ;
          rdfs:domain :Toy ;
