@@ -123,13 +123,33 @@
 #    Individuals
 #################################################################
 
+###  http://example.org/dfki/twinmap/toyCar/Screw1
+:Screw1 rdf:type owl:NamedIndividual ,
+                 :Screw .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw2
+:Screw2 rdf:type owl:NamedIndividual ,
+                 :Screw .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw3
+:Screw3 rdf:type owl:NamedIndividual ,
+                 :Screw .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw4
+:Screw4 rdf:type owl:NamedIndividual ,
+                 :Screw .
+
+
 ###  http://example.org/dfki/twinmap/toyCar/ToyTruck
 :ToyTruck rdf:type owl:NamedIndividual ,
                    :Truck ;
-          :hasPart :WheelBackLeft ,
-                   :WheelBackRight ,
-                   :WheelFrontLeft ,
-                   :WheelFrontRight .
+          :hasWheel :WheelBackLeft ,
+                    :WheelBackRight ,
+                    :WheelFrontLeft ,
+                    :WheelFrontRight .
 
 
 ###  http://example.org/dfki/twinmap/toyCar/WheelAttachBL
@@ -155,25 +175,29 @@
 ###  http://example.org/dfki/twinmap/toyCar/WheelBackLeft
 :WheelBackLeft rdf:type owl:NamedIndividual ,
                         :Wheel ;
-               :attachedAt :WheelAttachBL .
+               :attachedAt :WheelAttachBL ;
+               :fixedWith :Screw1 .
 
 
 ###  http://example.org/dfki/twinmap/toyCar/WheelBackRight
 :WheelBackRight rdf:type owl:NamedIndividual ,
                          :Wheel ;
-                :attachedAt :WheelAttachBR .
+                :attachedAt :WheelAttachBR ;
+                :fixedWith :Screw2 .
 
 
 ###  http://example.org/dfki/twinmap/toyCar/WheelFrontLeft
 :WheelFrontLeft rdf:type owl:NamedIndividual ,
                          :Wheel ;
-                :attachedAt :WheelAttachFL .
+                :attachedAt :WheelAttachFL ;
+                :fixedWith :Screw3 .
 
 
 ###  http://example.org/dfki/twinmap/toyCar/WheelFrontRight
 :WheelFrontRight rdf:type owl:NamedIndividual ,
                           :Wheel ;
-                 :attachedAt :WheelAttachFR .
+                 :attachedAt :WheelAttachFR ;
+                 :fixedWith :Screw4 .
 
 
 #################################################################
