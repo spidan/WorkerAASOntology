@@ -60,6 +60,9 @@
      rdfs:subClassOf :Toy .
 
 
+###  http://example.org/dfki/twinmap/toyCar/Connector
+:Connector rdf:type owl:Class ;
+           rdfs:subClassOf :Part .
 ###  http://example.org/dfki/twinmap/toyCar/Light
 :Light rdf:type owl:Class ;
        rdfs:subClassOf :Part .
@@ -81,7 +84,7 @@
 
 ###  http://example.org/dfki/twinmap/toyCar/Screw
 :Screw rdf:type owl:Class ;
-       rdfs:subClassOf :Part .
+       rdfs:subClassOf :Connector .
 
 
 ###  http://example.org/dfki/twinmap/toyCar/Toy
