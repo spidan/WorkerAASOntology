@@ -28,6 +28,8 @@
 
 ###  http://example.org/dfki/twinmap/toyCar/fixes
 :fixes rdf:type owl:ObjectProperty .
+
+
 ###  http://example.org/dfki/twinmap/toyCar/hasPart
 :hasPart rdf:type owl:ObjectProperty ;
          rdfs:domain :Toy ;
@@ -37,6 +39,7 @@
 ###  http://example.org/dfki/twinmap/toyCar/hasWheel
 :hasWheel rdf:type owl:ObjectProperty ;
           rdfs:subPropertyOf :hasPart .
+
 
 #################################################################
 #    Classes
@@ -76,6 +79,8 @@
 ###  http://example.org/dfki/twinmap/toyCar/Connector
 :Connector rdf:type owl:Class ;
            rdfs:subClassOf :Part .
+
+
 ###  http://example.org/dfki/twinmap/toyCar/Light
 :Light rdf:type owl:Class ;
        rdfs:subClassOf :Part .
