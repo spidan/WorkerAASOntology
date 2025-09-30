@@ -401,6 +401,16 @@
                               :Capability .
 
 
+###  http://example.org/dfki/twinmap/Capabilities/CanScrewByHand
+:CanScrewByHand rdf:type owl:NamedIndividual ,
+                         :byHand .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/CanScrewWithTool
+:CanScrewWithTool rdf:type owl:NamedIndividual ,
+                           :byScrewdriver .
+
+
 ###  http://example.org/dfki/twinmap/Capabilities/Insert_body_19650
 :Insert_body_19650 rdf:type owl:NamedIndividual ,
                             :Capability ,
