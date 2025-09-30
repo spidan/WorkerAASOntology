@@ -178,6 +178,58 @@
 
 
 #################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/dfki/twinmap/Tools/Inst_ScrewDriver1
+:Inst_ScrewDriver1 rdf:type owl:NamedIndividual ,
+                            [ owl:intersectionOf ( :ElectricScrewdriver
+                                                   [ rdf:type owl:Restriction ;
+                                                     owl:onProperty :fitsDrive ;
+                                                     owl:someValuesFrom :Philips
+                                                   ]
+                                                 ) ;
+                              rdf:type owl:Class
+                            ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Screw1
+:Screw1 rdf:type owl:NamedIndividual ,
+                 [ owl:intersectionOf ( :HexScrew
+                                        :TypeA
+                                      ) ;
+                   rdf:type owl:Class
+                 ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Screw2
+:Screw2 rdf:type owl:NamedIndividual ,
+                 [ owl:intersectionOf ( :HexScrew
+                                        :TypeA
+                                      ) ;
+                   rdf:type owl:Class
+                 ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Screw3
+:Screw3 rdf:type owl:NamedIndividual ,
+                 [ owl:intersectionOf ( :PhilipsScrew
+                                        :TypeA
+                                      ) ;
+                   rdf:type owl:Class
+                 ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Screw4
+:Screw4 rdf:type owl:NamedIndividual ,
+                 [ owl:intersectionOf ( :PhilipsScrew
+                                        :TypeA
+                                      ) ;
+                   rdf:type owl:Class
+                 ] .
+
+
+#################################################################
 #    General axioms
 #################################################################
 
