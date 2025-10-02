@@ -15,8 +15,7 @@
 ###  http://example.org/dfki/twinmap/Capabilities/attachedTo
 :attachedTo rdf:type owl:ObjectProperty ,
                      owl:SymmetricProperty ,
-                     owl:TransitiveProperty ,
-                     owl:IrreflexiveProperty ;
+                     owl:TransitiveProperty ;
             rdfs:domain :Part ;
             rdfs:range :Part ;
             rdfs:comment "Expresses that one part of a thing is attached to another thing as result of a worker action" ;
