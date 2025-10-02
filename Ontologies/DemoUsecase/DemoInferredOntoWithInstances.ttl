@@ -1,0 +1,909 @@
+@prefix : <http://example.org/dfki/twinmap/InfTest#> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://example.org/dfki/twinmap/InfTest#> .
+
+<http://example.org/dfki/twinmap/InfTest> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://example.org/dfki/twinmap/Capabilities/attachedTo
+<http://example.org/dfki/twinmap/Capabilities/attachedTo> rdf:type owl:ObjectProperty ,
+                                                                   owl:SymmetricProperty ,
+                                                                   owl:TransitiveProperty ;
+                                                          rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Part> ;
+                                                          rdfs:range <http://example.org/dfki/twinmap/Capabilities/Part> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/attachedWith
+<http://example.org/dfki/twinmap/Capabilities/attachedWith> rdf:type owl:ObjectProperty ,
+                                                                     owl:IrreflexiveProperty ;
+                                                            rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Part> ;
+                                                            rdfs:range <http://example.org/dfki/twinmap/Capabilities/Connector> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/containedIn
+<http://example.org/dfki/twinmap/Capabilities/containedIn> rdf:type owl:ObjectProperty ;
+                                                           owl:inverseOf <http://example.org/dfki/twinmap/Capabilities/contains> ;
+                                                           rdf:type owl:TransitiveProperty .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/contains
+<http://example.org/dfki/twinmap/Capabilities/contains> rdf:type owl:ObjectProperty ;
+                                                        rdfs:subPropertyOf owl:topObjectProperty ;
+                                                        rdf:type owl:TransitiveProperty ;
+                                                        rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Storage> ;
+                                                        rdfs:range <http://example.org/dfki/twinmap/Capabilities/Object> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/definedByRule
+<http://example.org/dfki/twinmap/Capabilities/definedByRule> rdf:type owl:ObjectProperty ,
+                                                                      owl:IrreflexiveProperty ;
+                                                             rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Condition> ;
+                                                             rdfs:range <http://example.org/dfki/twinmap/Capabilities/PDDLRule> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/gluedTo
+<http://example.org/dfki/twinmap/Capabilities/gluedTo> rdf:type owl:ObjectProperty ;
+                                                       rdfs:subPropertyOf <http://example.org/dfki/twinmap/Capabilities/attachedTo> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/hasCapability
+<http://example.org/dfki/twinmap/Capabilities/hasCapability> rdf:type owl:ObjectProperty ;
+                                                             rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Actor> ;
+                                                             rdfs:range <http://example.org/dfki/twinmap/Capabilities/Capability> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/hasCondition
+<http://example.org/dfki/twinmap/Capabilities/hasCondition> rdf:type owl:ObjectProperty ;
+                                                            rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Skill> ;
+                                                            rdfs:range <http://example.org/dfki/twinmap/Capabilities/Condition> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/hasParameter
+<http://example.org/dfki/twinmap/Capabilities/hasParameter> rdf:type owl:ObjectProperty ,
+                                                                     owl:IrreflexiveProperty ;
+                                                            rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Condition> ,
+                                                                        <http://example.org/dfki/twinmap/Capabilities/Skill> ;
+                                                            rdfs:range [ rdf:type owl:Class ;
+                                                                         owl:unionOf ( <http://example.org/dfki/twinmap/Capabilities/Actor>
+                                                                                       <http://example.org/dfki/twinmap/Capabilities/Object>
+                                                                                     )
+                                                                       ] .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/hasPostcondition
+<http://example.org/dfki/twinmap/Capabilities/hasPostcondition> rdf:type owl:ObjectProperty ;
+                                                                rdfs:subPropertyOf <http://example.org/dfki/twinmap/Capabilities/hasCondition> ;
+                                                                rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Skill> ;
+                                                                rdfs:range <http://example.org/dfki/twinmap/Capabilities/Postcondition> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/hasPrecondition
+<http://example.org/dfki/twinmap/Capabilities/hasPrecondition> rdf:type owl:ObjectProperty ;
+                                                               rdfs:subPropertyOf <http://example.org/dfki/twinmap/Capabilities/hasCondition> ;
+                                                               rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Skill> ;
+                                                               rdfs:range <http://example.org/dfki/twinmap/Capabilities/Precondition> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/hasSkill
+<http://example.org/dfki/twinmap/Capabilities/hasSkill> rdf:type owl:ObjectProperty ;
+                                                        rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Actor> ;
+                                                        rdfs:range <http://example.org/dfki/twinmap/Capabilities/Skill> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/heldBy
+<http://example.org/dfki/twinmap/Capabilities/heldBy> rdf:type owl:ObjectProperty ;
+                                                      owl:inverseOf <http://example.org/dfki/twinmap/Capabilities/holding> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/holding
+<http://example.org/dfki/twinmap/Capabilities/holding> rdf:type owl:ObjectProperty ;
+                                                       rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Actor> ;
+                                                       rdfs:range <http://example.org/dfki/twinmap/Capabilities/Object> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/implementedBy
+<http://example.org/dfki/twinmap/Capabilities/implementedBy> rdf:type owl:ObjectProperty ;
+                                                             owl:inverseOf <http://example.org/dfki/twinmap/Capabilities/implementsCapability> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/implementsCapability
+<http://example.org/dfki/twinmap/Capabilities/implementsCapability> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Skill> ;
+                                                                    rdfs:range <http://example.org/dfki/twinmap/Capabilities/Capability> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/providesCapability
+<http://example.org/dfki/twinmap/Capabilities/providesCapability> rdf:type owl:ObjectProperty ;
+                                                                  rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Service> ;
+                                                                  rdfs:range <http://example.org/dfki/twinmap/Capabilities/Capability> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/providesService
+<http://example.org/dfki/twinmap/Capabilities/providesService> rdf:type owl:ObjectProperty ;
+                                                               rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Provider> ;
+                                                               rdfs:range <http://example.org/dfki/twinmap/Capabilities/Service> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/screwedTo
+<http://example.org/dfki/twinmap/Capabilities/screwedTo> rdf:type owl:ObjectProperty ;
+                                                         rdfs:subPropertyOf <http://example.org/dfki/twinmap/Capabilities/attachedTo> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/tiedTo
+<http://example.org/dfki/twinmap/Capabilities/tiedTo> rdf:type owl:ObjectProperty ;
+                                                      rdfs:subPropertyOf <http://example.org/dfki/twinmap/Capabilities/attachedTo> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/usesTool
+<http://example.org/dfki/twinmap/Capabilities/usesTool> rdf:type owl:ObjectProperty ;
+                                                        rdfs:range <http://example.org/dfki/twinmap/Capabilities/Tool> .
+
+
+###  http://example.org/dfki/twinmap/Tools/compatibleTool
+<http://example.org/dfki/twinmap/Tools/compatibleTool> rdf:type owl:ObjectProperty ;
+                                                       owl:inverseOf <http://example.org/dfki/twinmap/Tools/fitsDrive> .
+
+
+###  http://example.org/dfki/twinmap/Tools/fitsDrive
+<http://example.org/dfki/twinmap/Tools/fitsDrive> rdf:type owl:ObjectProperty ;
+                                                  rdfs:domain <http://example.org/dfki/twinmap/Tools/Screwdriver> ;
+                                                  rdfs:range <http://example.org/dfki/twinmap/Tools/ScrewDrive> .
+
+
+###  http://example.org/dfki/twinmap/Tools/hasDrive
+<http://example.org/dfki/twinmap/Tools/hasDrive> rdf:type owl:ObjectProperty ;
+                                                 rdfs:domain <http://example.org/dfki/twinmap/Tools/Screw> ;
+                                                 rdfs:range <http://example.org/dfki/twinmap/Tools/ScrewDrive> .
+
+
+###  http://example.org/dfki/twinmap/Tools/hasThread
+<http://example.org/dfki/twinmap/Tools/hasThread> rdf:type owl:ObjectProperty ;
+                                                  rdfs:domain <http://example.org/dfki/twinmap/Tools/Screw> ;
+                                                  rdfs:range <http://example.org/dfki/twinmap/Tools/Thread> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/attachedAt
+<http://example.org/dfki/twinmap/toyCar/attachedAt> rdf:type owl:ObjectProperty ;
+                                                    rdfs:domain <http://example.org/dfki/twinmap/toyCar/Part> ;
+                                                    rdfs:range <http://example.org/dfki/twinmap/toyCar/Attachment> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/fixedWith
+<http://example.org/dfki/twinmap/toyCar/fixedWith> rdf:type owl:ObjectProperty ;
+                                                   owl:inverseOf <http://example.org/dfki/twinmap/toyCar/fixes> ;
+                                                   rdfs:domain <http://example.org/dfki/twinmap/toyCar/Part> ;
+                                                   rdfs:range <http://example.org/dfki/twinmap/toyCar/Connector> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/fixes
+<http://example.org/dfki/twinmap/toyCar/fixes> rdf:type owl:ObjectProperty .
+
+
+###  http://example.org/dfki/twinmap/toyCar/hasPart
+<http://example.org/dfki/twinmap/toyCar/hasPart> rdf:type owl:ObjectProperty ;
+                                                 rdfs:domain <http://example.org/dfki/twinmap/toyCar/Toy> ;
+                                                 rdfs:range <http://example.org/dfki/twinmap/toyCar/Part> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/hasWheel
+<http://example.org/dfki/twinmap/toyCar/hasWheel> rdf:type owl:ObjectProperty ;
+                                                  rdfs:subPropertyOf <http://example.org/dfki/twinmap/toyCar/hasPart> .
+
+
+###  http://www.w3.org/2002/07/owl#topObjectProperty
+owl:topObjectProperty rdf:type owl:ObjectProperty ,
+                               owl:SymmetricProperty ,
+                               owl:TransitiveProperty ,
+                               owl:ReflexiveProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  http://example.org/dfki/twinmap/Capabilities/isTightened
+<http://example.org/dfki/twinmap/Capabilities/isTightened> rdf:type owl:DatatypeProperty ;
+                                                           rdfs:domain <http://example.org/dfki/twinmap/Capabilities/Screw> ;
+                                                           rdfs:range xsd:boolean .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://example.org/dfki/twinmap/Capabilities/Actor
+<http://example.org/dfki/twinmap/Capabilities/Actor> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Assemble
+<http://example.org/dfki/twinmap/Capabilities/Assemble> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Capability> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/CableTies
+<http://example.org/dfki/twinmap/Capabilities/CableTies> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Connector> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Capability
+<http://example.org/dfki/twinmap/Capabilities/Capability> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Condition
+<http://example.org/dfki/twinmap/Capabilities/Condition> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Connector
+<http://example.org/dfki/twinmap/Capabilities/Connector> rdf:type owl:Class ;
+                                                         rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/WorkableObject> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Glue
+<http://example.org/dfki/twinmap/Capabilities/Glue> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Connector> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Insert
+<http://example.org/dfki/twinmap/Capabilities/Insert> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Capability> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Object
+<http://example.org/dfki/twinmap/Capabilities/Object> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/PDDLRule
+<http://example.org/dfki/twinmap/Capabilities/PDDLRule> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Part
+<http://example.org/dfki/twinmap/Capabilities/Part> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/WorkableObject> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Pick
+<http://example.org/dfki/twinmap/Capabilities/Pick> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Skill> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Place
+<http://example.org/dfki/twinmap/Capabilities/Place> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Skill> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Postcondition
+<http://example.org/dfki/twinmap/Capabilities/Postcondition> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Condition> ;
+                                                             owl:disjointWith <http://example.org/dfki/twinmap/Capabilities/Precondition> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Precondition
+<http://example.org/dfki/twinmap/Capabilities/Precondition> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Condition> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Provider
+<http://example.org/dfki/twinmap/Capabilities/Provider> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Screw
+<http://example.org/dfki/twinmap/Capabilities/Screw> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Connector> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Screwdriver
+<http://example.org/dfki/twinmap/Capabilities/Screwdriver> rdf:type owl:Class ;
+                                                           rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Object> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Screwing
+<http://example.org/dfki/twinmap/Capabilities/Screwing> rdf:type owl:Class ;
+                                                        rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Skill> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Service
+<http://example.org/dfki/twinmap/Capabilities/Service> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Skill
+<http://example.org/dfki/twinmap/Capabilities/Skill> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Storage
+<http://example.org/dfki/twinmap/Capabilities/Storage> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Object> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Table
+<http://example.org/dfki/twinmap/Capabilities/Table> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Storage> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Tighten
+<http://example.org/dfki/twinmap/Capabilities/Tighten> rdf:type owl:Class ;
+                                                       rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Capability> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Tool
+<http://example.org/dfki/twinmap/Capabilities/Tool> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/WorkableObject
+<http://example.org/dfki/twinmap/Capabilities/WorkableObject> rdf:type owl:Class ;
+                                                              rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Object> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Worker
+<http://example.org/dfki/twinmap/Capabilities/Worker> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Actor> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/byHand
+<http://example.org/dfki/twinmap/Capabilities/byHand> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Screwing> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/byScrewdriver
+<http://example.org/dfki/twinmap/Capabilities/byScrewdriver> rdf:type owl:Class ;
+                                                             rdfs:subClassOf <http://example.org/dfki/twinmap/Capabilities/Screwing> ,
+                                                                             [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Capabilities/Screwing>
+                                                                                                    [ rdf:type owl:Restriction ;
+                                                                                                      owl:onProperty <http://example.org/dfki/twinmap/Capabilities/usesTool> ;
+                                                                                                      owl:minCardinality "1"^^xsd:nonNegativeInteger
+                                                                                                    ]
+                                                                                                  ) ;
+                                                                               rdf:type owl:Class
+                                                                             ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Blank
+<http://example.org/dfki/twinmap/Tools/Blank> rdf:type owl:Class ;
+                                              rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/ScrewDrive> .
+
+
+###  http://example.org/dfki/twinmap/Tools/Cross
+<http://example.org/dfki/twinmap/Tools/Cross> rdf:type owl:Class ;
+                                              rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/ScrewDrive> .
+
+
+###  http://example.org/dfki/twinmap/Tools/CrossScrew
+<http://example.org/dfki/twinmap/Tools/CrossScrew> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                                   [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/Screw>
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty <http://example.org/dfki/twinmap/Tools/hasDrive> ;
+                                                                                            owl:someValuesFrom <http://example.org/dfki/twinmap/Tools/Cross>
+                                                                                          ]
+                                                                                        ) ;
+                                                                     rdf:type owl:Class
+                                                                   ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/ElectricScrewdriver
+<http://example.org/dfki/twinmap/Tools/ElectricScrewdriver> rdf:type owl:Class ;
+                                                            rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/Screwdriver> .
+
+
+###  http://example.org/dfki/twinmap/Tools/HandScrew
+<http://example.org/dfki/twinmap/Tools/HandScrew> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                                  [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/Screw>
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <http://example.org/dfki/twinmap/Tools/hasDrive> ;
+                                                                                           owl:someValuesFrom <http://example.org/dfki/twinmap/Tools/Blank>
+                                                                                         ]
+                                                                                       ) ;
+                                                                    rdf:type owl:Class
+                                                                  ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Hex
+<http://example.org/dfki/twinmap/Tools/Hex> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/ScrewDrive> .
+
+
+###  http://example.org/dfki/twinmap/Tools/HexScrew
+<http://example.org/dfki/twinmap/Tools/HexScrew> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                                 [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/Screw>
+                                                                                        [ rdf:type owl:Restriction ;
+                                                                                          owl:onProperty <http://example.org/dfki/twinmap/Tools/hasDrive> ;
+                                                                                          owl:someValuesFrom <http://example.org/dfki/twinmap/Tools/Hex>
+                                                                                        ]
+                                                                                      ) ;
+                                                                   rdf:type owl:Class
+                                                                 ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/ManualScrewdriver
+<http://example.org/dfki/twinmap/Tools/ManualScrewdriver> rdf:type owl:Class ;
+                                                          rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/Screwdriver> .
+
+
+###  http://example.org/dfki/twinmap/Tools/Philips
+<http://example.org/dfki/twinmap/Tools/Philips> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/ScrewDrive> .
+
+
+###  http://example.org/dfki/twinmap/Tools/PhilipsScrew
+<http://example.org/dfki/twinmap/Tools/PhilipsScrew> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                                     [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/Screw>
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty <http://example.org/dfki/twinmap/Tools/hasDrive> ;
+                                                                                              owl:someValuesFrom <http://example.org/dfki/twinmap/Tools/Philips>
+                                                                                            ]
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Screw
+<http://example.org/dfki/twinmap/Tools/Screw> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Tools/ScrewDrive
+<http://example.org/dfki/twinmap/Tools/ScrewDrive> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Tools/Screwdriver
+<http://example.org/dfki/twinmap/Tools/Screwdriver> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/Tool> .
+
+
+###  http://example.org/dfki/twinmap/Tools/Slotted
+<http://example.org/dfki/twinmap/Tools/Slotted> rdf:type owl:Class ;
+                                                rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/ScrewDrive> .
+
+
+###  http://example.org/dfki/twinmap/Tools/SlottedScrew
+<http://example.org/dfki/twinmap/Tools/SlottedScrew> rdf:type owl:Class ;
+                                                     rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                                     [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/Screw>
+                                                                                            [ rdf:type owl:Restriction ;
+                                                                                              owl:onProperty <http://example.org/dfki/twinmap/Tools/hasDrive> ;
+                                                                                              owl:someValuesFrom <http://example.org/dfki/twinmap/Tools/Slotted>
+                                                                                            ]
+                                                                                          ) ;
+                                                                       rdf:type owl:Class
+                                                                     ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Thread
+<http://example.org/dfki/twinmap/Tools/Thread> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Tools/Tool
+<http://example.org/dfki/twinmap/Tools/Tool> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/Tools/Torx
+<http://example.org/dfki/twinmap/Tools/Torx> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/ScrewDrive> .
+
+
+###  http://example.org/dfki/twinmap/Tools/TorxScrew
+<http://example.org/dfki/twinmap/Tools/TorxScrew> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                                  [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/Screw>
+                                                                                         [ rdf:type owl:Restriction ;
+                                                                                           owl:onProperty <http://example.org/dfki/twinmap/Tools/hasDrive> ;
+                                                                                           owl:someValuesFrom <http://example.org/dfki/twinmap/Tools/Torx>
+                                                                                         ]
+                                                                                       ) ;
+                                                                    rdf:type owl:Class
+                                                                  ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/TypeA
+<http://example.org/dfki/twinmap/Tools/TypeA> rdf:type owl:Class ;
+                                              rdfs:subClassOf <http://example.org/dfki/twinmap/Tools/Thread> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Attachment
+<http://example.org/dfki/twinmap/toyCar/Attachment> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Battery
+<http://example.org/dfki/twinmap/toyCar/Battery> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Part> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Bicycle
+<http://example.org/dfki/twinmap/toyCar/Bicycle> rdf:type owl:Class ;
+                                                 rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Bike> ;
+                                                 owl:disjointWith <http://example.org/dfki/twinmap/toyCar/Motorcycle> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Bike
+<http://example.org/dfki/twinmap/toyCar/Bike> rdf:type owl:Class ;
+                                              rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Toy> ;
+                                              owl:disjointWith <http://example.org/dfki/twinmap/toyCar/Car> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Bus
+<http://example.org/dfki/twinmap/toyCar/Bus> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Car> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Car
+<http://example.org/dfki/twinmap/toyCar/Car> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Toy> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Connector
+<http://example.org/dfki/twinmap/toyCar/Connector> rdf:type owl:Class ;
+                                                   rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Part> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Light
+<http://example.org/dfki/twinmap/toyCar/Light> rdf:type owl:Class ;
+                                               rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Part> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Motorcycle
+<http://example.org/dfki/twinmap/toyCar/Motorcycle> rdf:type owl:Class ;
+                                                    rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Bike> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Part
+<http://example.org/dfki/twinmap/toyCar/Part> rdf:type owl:Class .
+
+
+###  http://example.org/dfki/twinmap/toyCar/PassengerCar
+<http://example.org/dfki/twinmap/toyCar/PassengerCar> rdf:type owl:Class ;
+                                                      rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Car> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw
+<http://example.org/dfki/twinmap/toyCar/Screw> rdf:type owl:Class ;
+                                               rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Connector> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Toy
+<http://example.org/dfki/twinmap/toyCar/Toy> rdf:type owl:Class ;
+                                             rdfs:subClassOf [ rdf:type owl:Class ;
+                                                               owl:unionOf ( <http://example.org/dfki/twinmap/toyCar/Bike>
+                                                                             <http://example.org/dfki/twinmap/toyCar/Car>
+                                                                           )
+                                                             ] .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Truck
+<http://example.org/dfki/twinmap/toyCar/Truck> rdf:type owl:Class ;
+                                               rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Car> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Wheel
+<http://example.org/dfki/twinmap/toyCar/Wheel> rdf:type owl:Class ;
+                                               rdfs:subClassOf <http://example.org/dfki/twinmap/toyCar/Part> .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://example.org/dfki/twinmap/Capabilities/AssembleToyCar
+<http://example.org/dfki/twinmap/Capabilities/AssembleToyCar> rdf:type owl:NamedIndividual ,
+                                                                       <http://example.org/dfki/twinmap/Capabilities/Service> ;
+                                                              <http://example.org/dfki/twinmap/Capabilities/hasParameter> <http://example.org/dfki/twinmap/toyCar/ToyTruck> ;
+                                                              <http://example.org/dfki/twinmap/Capabilities/providesCapability> <http://example.org/dfki/twinmap/Capabilities/Assemble_body_19650> ,
+                                                                                                                                <http://example.org/dfki/twinmap/Capabilities/Insert_body_19650> ,
+                                                                                                                                <http://example.org/dfki/twinmap/Capabilities/Tighten_body_19650> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Assemble_body_19650
+<http://example.org/dfki/twinmap/Capabilities/Assemble_body_19650> rdf:type owl:NamedIndividual ,
+                                                                            <http://example.org/dfki/twinmap/Capabilities/Assemble> ,
+                                                                            <http://example.org/dfki/twinmap/Capabilities/Capability> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/CanScrewByHand
+<http://example.org/dfki/twinmap/Capabilities/CanScrewByHand> rdf:type owl:NamedIndividual ,
+                                                                       <http://example.org/dfki/twinmap/Capabilities/Screwing> ,
+                                                                       <http://example.org/dfki/twinmap/Capabilities/Skill> ,
+                                                                       <http://example.org/dfki/twinmap/Capabilities/byHand> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/CanScrewWithTool
+<http://example.org/dfki/twinmap/Capabilities/CanScrewWithTool> rdf:type owl:NamedIndividual ,
+                                                                         <http://example.org/dfki/twinmap/Capabilities/Screwing> ,
+                                                                         <http://example.org/dfki/twinmap/Capabilities/Skill> ,
+                                                                         <http://example.org/dfki/twinmap/Capabilities/byScrewdriver> ;
+                                                                <http://example.org/dfki/twinmap/Capabilities/usesTool> <http://example.org/dfki/twinmap/Tools/Inst_ScrewDriver1> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Insert_body_19650
+<http://example.org/dfki/twinmap/Capabilities/Insert_body_19650> rdf:type owl:NamedIndividual ,
+                                                                          <http://example.org/dfki/twinmap/Capabilities/Capability> ,
+                                                                          <http://example.org/dfki/twinmap/Capabilities/Insert> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/Tighten_body_19650
+<http://example.org/dfki/twinmap/Capabilities/Tighten_body_19650> rdf:type owl:NamedIndividual ,
+                                                                           <http://example.org/dfki/twinmap/Capabilities/Capability> ,
+                                                                           <http://example.org/dfki/twinmap/Capabilities/Tighten> .
+
+
+###  http://example.org/dfki/twinmap/Capabilities/worker_instance
+<http://example.org/dfki/twinmap/Capabilities/worker_instance> rdf:type owl:NamedIndividual ,
+                                                                        <http://example.org/dfki/twinmap/Capabilities/Actor> ,
+                                                                        <http://example.org/dfki/twinmap/Capabilities/Provider> ,
+                                                                        <http://example.org/dfki/twinmap/Capabilities/Worker> ;
+                                                               <http://example.org/dfki/twinmap/Capabilities/hasSkill> <http://example.org/dfki/twinmap/Capabilities/CanScrewByHand> ,
+                                                                                                                       <http://example.org/dfki/twinmap/Capabilities/CanScrewWithTool> ;
+                                                               <http://example.org/dfki/twinmap/Capabilities/providesService> <http://example.org/dfki/twinmap/Capabilities/AssembleToyCar> ,
+                                                                                                                              :MakeCoffee ,
+                                                                                                                              :QCToyBike .
+
+
+###  http://example.org/dfki/twinmap/InfTest#MakeCoffee
+:MakeCoffee rdf:type owl:NamedIndividual ,
+                     <http://example.org/dfki/twinmap/Capabilities/Service> .
+
+
+###  http://example.org/dfki/twinmap/InfTest#QCToyBike
+:QCToyBike rdf:type owl:NamedIndividual ,
+                    <http://example.org/dfki/twinmap/Capabilities/Service> .
+
+
+###  http://example.org/dfki/twinmap/Tools/Inst_ScrewDriver1
+<http://example.org/dfki/twinmap/Tools/Inst_ScrewDriver1> rdf:type owl:NamedIndividual ,
+                                                                   <http://example.org/dfki/twinmap/Capabilities/Tool> ,
+                                                                   <http://example.org/dfki/twinmap/Tools/ElectricScrewdriver> ,
+                                                                   <http://example.org/dfki/twinmap/Tools/Screwdriver> ,
+                                                                   <http://example.org/dfki/twinmap/Tools/Tool> ,
+                                                                   [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/ElectricScrewdriver>
+                                                                                          [ rdf:type owl:Restriction ;
+                                                                                            owl:onProperty <http://example.org/dfki/twinmap/Tools/fitsDrive> ;
+                                                                                            owl:someValuesFrom <http://example.org/dfki/twinmap/Tools/Philips>
+                                                                                          ]
+                                                                                        ) ;
+                                                                     rdf:type owl:Class
+                                                                   ] .
+
+
+###  http://example.org/dfki/twinmap/Tools/Screw1
+<http://example.org/dfki/twinmap/Tools/Screw1> rdf:type owl:NamedIndividual ,
+                                                        <http://example.org/dfki/twinmap/Tools/HexScrew> ,
+                                                        <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                        <http://example.org/dfki/twinmap/Tools/Thread> ,
+                                                        <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Connector> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Screw> ,
+                                                        [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/HexScrew>
+                                                                               <http://example.org/dfki/twinmap/Tools/TypeA>
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ] ;
+                                               owl:sameAs <http://example.org/dfki/twinmap/toyCar/Screw1> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw1
+
+###  http://example.org/dfki/twinmap/Tools/Screw2
+<http://example.org/dfki/twinmap/Tools/Screw2> rdf:type owl:NamedIndividual ,
+                                                        <http://example.org/dfki/twinmap/Tools/HexScrew> ,
+                                                        <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                        <http://example.org/dfki/twinmap/Tools/Thread> ,
+                                                        <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Connector> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Screw> ,
+                                                        [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/HexScrew>
+                                                                               <http://example.org/dfki/twinmap/Tools/TypeA>
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ] ;
+                                               owl:sameAs <http://example.org/dfki/twinmap/toyCar/Screw2> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw2
+
+###  http://example.org/dfki/twinmap/Tools/Screw3
+<http://example.org/dfki/twinmap/Tools/Screw3> rdf:type owl:NamedIndividual ,
+                                                        <http://example.org/dfki/twinmap/Tools/PhilipsScrew> ,
+                                                        <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                        <http://example.org/dfki/twinmap/Tools/Thread> ,
+                                                        <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Connector> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Screw> ,
+                                                        [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/PhilipsScrew>
+                                                                               <http://example.org/dfki/twinmap/Tools/TypeA>
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ] ;
+                                               owl:sameAs <http://example.org/dfki/twinmap/toyCar/Screw3> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw3
+
+###  http://example.org/dfki/twinmap/Tools/Screw4
+<http://example.org/dfki/twinmap/Tools/Screw4> rdf:type owl:NamedIndividual ,
+                                                        <http://example.org/dfki/twinmap/Tools/PhilipsScrew> ,
+                                                        <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                        <http://example.org/dfki/twinmap/Tools/Thread> ,
+                                                        <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Connector> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                        <http://example.org/dfki/twinmap/toyCar/Screw> ,
+                                                        [ owl:intersectionOf ( <http://example.org/dfki/twinmap/Tools/PhilipsScrew>
+                                                                               <http://example.org/dfki/twinmap/Tools/TypeA>
+                                                                             ) ;
+                                                          rdf:type owl:Class
+                                                        ] ;
+                                               owl:sameAs <http://example.org/dfki/twinmap/toyCar/Screw4> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw4
+
+###  http://example.org/dfki/twinmap/toyCar/Screw1
+<http://example.org/dfki/twinmap/toyCar/Screw1> rdf:type owl:NamedIndividual ,
+                                                         <http://example.org/dfki/twinmap/Tools/HexScrew> ,
+                                                         <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                         <http://example.org/dfki/twinmap/Tools/Thread> ,
+                                                         <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Connector> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Screw> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw2
+<http://example.org/dfki/twinmap/toyCar/Screw2> rdf:type owl:NamedIndividual ,
+                                                         <http://example.org/dfki/twinmap/Tools/HexScrew> ,
+                                                         <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                         <http://example.org/dfki/twinmap/Tools/Thread> ,
+                                                         <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Connector> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Screw> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw3
+<http://example.org/dfki/twinmap/toyCar/Screw3> rdf:type owl:NamedIndividual ,
+                                                         <http://example.org/dfki/twinmap/Tools/PhilipsScrew> ,
+                                                         <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                         <http://example.org/dfki/twinmap/Tools/Thread> ,
+                                                         <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Connector> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Screw> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/Screw4
+<http://example.org/dfki/twinmap/toyCar/Screw4> rdf:type owl:NamedIndividual ,
+                                                         <http://example.org/dfki/twinmap/Tools/PhilipsScrew> ,
+                                                         <http://example.org/dfki/twinmap/Tools/Screw> ,
+                                                         <http://example.org/dfki/twinmap/Tools/Thread> ,
+                                                         <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Connector> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                         <http://example.org/dfki/twinmap/toyCar/Screw> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/ToyTruck
+<http://example.org/dfki/twinmap/toyCar/ToyTruck> rdf:type owl:NamedIndividual ,
+                                                           <http://example.org/dfki/twinmap/toyCar/Car> ,
+                                                           <http://example.org/dfki/twinmap/toyCar/Toy> ,
+                                                           <http://example.org/dfki/twinmap/toyCar/Truck> ;
+                                                  <http://example.org/dfki/twinmap/toyCar/hasWheel> <http://example.org/dfki/twinmap/toyCar/WheelBackLeft> ,
+                                                                                                    <http://example.org/dfki/twinmap/toyCar/WheelBackRight> ,
+                                                                                                    <http://example.org/dfki/twinmap/toyCar/WheelFrontLeft> ,
+                                                                                                    <http://example.org/dfki/twinmap/toyCar/WheelFrontRight> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelAttachBL
+<http://example.org/dfki/twinmap/toyCar/WheelAttachBL> rdf:type owl:NamedIndividual ,
+                                                                <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                                <http://example.org/dfki/twinmap/toyCar/Attachment> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelAttachBR
+<http://example.org/dfki/twinmap/toyCar/WheelAttachBR> rdf:type owl:NamedIndividual ,
+                                                                <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                                <http://example.org/dfki/twinmap/toyCar/Attachment> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelAttachFL
+<http://example.org/dfki/twinmap/toyCar/WheelAttachFL> rdf:type owl:NamedIndividual ,
+                                                                <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                                <http://example.org/dfki/twinmap/toyCar/Attachment> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelAttachFR
+<http://example.org/dfki/twinmap/toyCar/WheelAttachFR> rdf:type owl:NamedIndividual ,
+                                                                <http://example.org/dfki/twinmap/Tools/TypeA> ,
+                                                                <http://example.org/dfki/twinmap/toyCar/Attachment> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelBackLeft
+<http://example.org/dfki/twinmap/toyCar/WheelBackLeft> rdf:type owl:NamedIndividual ,
+                                                                <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                                <http://example.org/dfki/twinmap/toyCar/Wheel> ;
+                                                       <http://example.org/dfki/twinmap/toyCar/attachedAt> <http://example.org/dfki/twinmap/toyCar/WheelAttachBL> ;
+                                                       <http://example.org/dfki/twinmap/toyCar/fixedWith> <http://example.org/dfki/twinmap/toyCar/Screw1> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelBackRight
+<http://example.org/dfki/twinmap/toyCar/WheelBackRight> rdf:type owl:NamedIndividual ,
+                                                                 <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                                 <http://example.org/dfki/twinmap/toyCar/Wheel> ;
+                                                        <http://example.org/dfki/twinmap/toyCar/attachedAt> <http://example.org/dfki/twinmap/toyCar/WheelAttachBR> ;
+                                                        <http://example.org/dfki/twinmap/toyCar/fixedWith> <http://example.org/dfki/twinmap/toyCar/Screw2> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelFrontLeft
+<http://example.org/dfki/twinmap/toyCar/WheelFrontLeft> rdf:type owl:NamedIndividual ,
+                                                                 <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                                 <http://example.org/dfki/twinmap/toyCar/Wheel> ;
+                                                        <http://example.org/dfki/twinmap/toyCar/attachedAt> <http://example.org/dfki/twinmap/toyCar/WheelAttachFL> ;
+                                                        <http://example.org/dfki/twinmap/toyCar/fixedWith> <http://example.org/dfki/twinmap/toyCar/Screw3> .
+
+
+###  http://example.org/dfki/twinmap/toyCar/WheelFrontRight
+<http://example.org/dfki/twinmap/toyCar/WheelFrontRight> rdf:type owl:NamedIndividual ,
+                                                                  <http://example.org/dfki/twinmap/toyCar/Part> ,
+                                                                  <http://example.org/dfki/twinmap/toyCar/Wheel> ;
+                                                         <http://example.org/dfki/twinmap/toyCar/attachedAt> <http://example.org/dfki/twinmap/toyCar/WheelAttachFR> ;
+                                                         <http://example.org/dfki/twinmap/toyCar/fixedWith> <http://example.org/dfki/twinmap/toyCar/Screw4> .
+
+
+#################################################################
+#    General axioms
+#################################################################
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://example.org/dfki/twinmap/Tools/Blank>
+                <http://example.org/dfki/twinmap/Tools/Cross>
+                <http://example.org/dfki/twinmap/Tools/Hex>
+                <http://example.org/dfki/twinmap/Tools/Philips>
+                <http://example.org/dfki/twinmap/Tools/Slotted>
+                <http://example.org/dfki/twinmap/Tools/Torx>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://example.org/dfki/twinmap/Tools/HandScrew>
+                <http://example.org/dfki/twinmap/Tools/HexScrew>
+                <http://example.org/dfki/twinmap/Tools/PhilipsScrew>
+                <http://example.org/dfki/twinmap/Tools/SlottedScrew>
+                <http://example.org/dfki/twinmap/Tools/TorxScrew>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://example.org/dfki/twinmap/toyCar/Attachment>
+                <http://example.org/dfki/twinmap/toyCar/Part>
+                <http://example.org/dfki/twinmap/toyCar/Toy>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://example.org/dfki/twinmap/toyCar/Battery>
+                <http://example.org/dfki/twinmap/toyCar/Light>
+                <http://example.org/dfki/twinmap/toyCar/Wheel>
+              )
+] .
+
+
+[ rdf:type owl:AllDisjointClasses ;
+  owl:members ( <http://example.org/dfki/twinmap/toyCar/Bus>
+                <http://example.org/dfki/twinmap/toyCar/PassengerCar>
+                <http://example.org/dfki/twinmap/toyCar/Truck>
+              )
+] .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi
